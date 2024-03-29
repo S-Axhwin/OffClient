@@ -4,8 +4,6 @@ import { Login } from "./pages/user/Login"
 import PrivateRouter from "./PrivateRoute"
 import Navbar from "./pages/common/nav/Navbar"
 
-
-
 const App = () => {
   return (
     <>
