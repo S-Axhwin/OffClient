@@ -9,7 +9,7 @@ import store from './redux/store.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
   <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-    <BrowserRouter basename='OffIciumClient'>
+    <BrowserRouter basename='OffClient'>
       <App />
     </BrowserRouter>
   </ThemeProvider>
