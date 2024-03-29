@@ -4,7 +4,7 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
-  base: "/OffIciumClient",
+  base: "/OffClient",
   
   resolve: {
     alias: {
