@@ -2,6 +2,7 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://s-axhwin.github.io/OffClient/",
   "type": "module",
   "scripts": {
     "dev": "vite",
