@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { LampContainer } from "@/components/ui/lamp";
 import { Scroll } from '@/pages/Home/Scroll'
 import { GlobeDemo } from "./Globe";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { SignIn } from "./SignIn";
+import { ScrollReveal } from "./ScrollReveal";
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+        className="mt-8 bg-gradient-to-br  from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
       >
         OffIcium <br />
         <div className="md:text-4xl mt-5">
@@ -31,6 +31,7 @@ export default function Home() {
         </div>
       </motion.h1>
     </LampContainer>
+    <ScrollReveal/>
     <GlobeDemo/>
     <Scroll/>
     </div>

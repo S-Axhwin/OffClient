@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchUser = createAsyncThunk("fetchUserToken", async(payload:any) => {
-
-    const data:any = axios.post("https://offserver-production.up.railway.app/user/login", {gmail:payload.gmail, password: payload.password})
+    console.log(payload);
+    const data:any = axios.post(`https://offserver-production.up.railway.app/${payload.isRec?"rec":"user"}/login`, {gmail:payload.gmail, password: payload.password})
     .then((res:any) => {
         console.log(res);
         localStorage.setItem("token", res.data.token)
@@ -20,6 +20,7 @@ const inti = {
     isloggedIn: false,
     error: '',
     token: '',
+    isRec: false
 }
 
 const slice:any = {
@@ -42,6 +43,7 @@ const slice:any = {
             state.username = curpayload.gmail.substring(0, curpayload.gmail.lastIndexOf("@"));
             state.token = curpayload.token
             state.isloading = false;
+            state.isRec = payload.payload.isRec || false
         });
 
         builder.addCase(fetchUser.pending, (state:any) => {

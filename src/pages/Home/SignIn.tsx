@@ -1,5 +1,4 @@
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { Link } from "react-router-dom";
 export function SignIn() {
   return (
     <div className="m-4 flex justify-center text-center">
@@ -9,7 +8,7 @@ export function SignIn() {
         className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
       >
         <AceternityLogo />
-        <span>S I G N &nbsp; I N</span>
+        <span className="text-base">S I G N &nbsp; I N</span>
       </HoverBorderGradient>
     </div>
   );

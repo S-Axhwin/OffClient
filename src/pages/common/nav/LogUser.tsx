@@ -25,7 +25,7 @@ export default function LogUser({user}:any) {
   }
 
   return (
-    <NavigationMenu className="w-screen flex justify-between p-4">
+    <NavigationMenu  className="w-screen flex justify-between p-4 z-50">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Get Started</NavigationMenuTrigger>
@@ -46,9 +46,11 @@ export default function LogUser({user}:any) {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem title="Introduction">
+              <Link to={user.isRec?"/form":"/joblisting" }>
+              <ListItem title="Job Listing">
                 This is the site that helps you to find the career.
               </ListItem>
+              </Link>
               <ListItem title="Contributers">
                 Google,Microsoft and many more companies are ready to hire you.
               </ListItem>

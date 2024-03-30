@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Outlet, Navigate } from "react-router-dom";
-const PrivateRouter = () => {
+const PrivateRouterRec = () => {
   const user:any = useSelector((item:any) => item.user);
 
-  if(user.isloggedIn){
+  if(user.isloggedIn && user.isRec){
     return (<Outlet/>)
   }
   return (
@@ -11,4 +11,4 @@ const PrivateRouter = () => {
   )
 }
 
-export default PrivateRouter
+export default PrivateRouterRec

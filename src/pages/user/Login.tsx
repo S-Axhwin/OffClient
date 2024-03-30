@@ -13,16 +13,25 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 
 export function Login() {
   const Navigate = useNavigate()
   const dispatch = useDispatch();
   const [gmail, setgmail] = useState<String>("");
   const [password, setpassword] = useState<String>("");
+  const [isRec, setIsRec] = useState(false);
   const handleForm = () => {
     if(password && gmail){
-      dispatch(fetchUser({gmail, password}) as any)
-      .then(() => {Navigate("/dashboard")} )
+      dispatch(fetchUser({gmail, password, isRec}) as any)
+      .then(() => {
+        if(isRec){
+          Navigate("/RecDashboard")
+        }else {
+          Navigate("/joblisting")
+        }
+
+      } )
     }
     
   }
@@ -31,7 +40,7 @@ export function Login() {
     <Card className="w-[350px] transition-all duration-400 hover:drop-shadow-[0_35px_35px_#646464] hover:scale-110">
       <CardHeader>
         <CardTitle>LOGIN</CardTitle>
-        <CardDescription>Find 100+ JOBS IN ONE PLACE</CardDescription>
+        <CardDescription>FIND 100+ JOBS IN ONE PLACE</CardDescription>
       </CardHeader>
       <CardContent>
         <form>
@@ -59,7 +68,10 @@ export function Login() {
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={() => {setgmail(""); setpassword("")}}>Cancel</Button>
+      <div className="flex items-center space-x-2">
+      <Switch id="airplane-mode" onClick={() => setIsRec(!isRec)} />
+      <Label htmlFor="airplane-mode">As {isRec?"Recruiter":"Job Seeker"}</Label>
+    </div>
         <Button onClick={handleForm}>Login</Button>
       </CardFooter>
     </Card>
