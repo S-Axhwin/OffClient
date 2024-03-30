@@ -51,7 +51,7 @@ export function NotLog() {
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
-      <Button variant="outline" className="hover:bg-green-900">Sign Up</Button>
+      
       <Button variant="outline" className="hover:bg-green-900">Sign In</Button>
     </NavigationMenu>
   )
