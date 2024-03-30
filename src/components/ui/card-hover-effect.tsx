@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export const HoverEffect = ({
   items,
@@ -14,11 +15,12 @@ export const HoverEffect = ({
     link: string;
     salary: string;
     id: string;
+    gmail: string
   }[];
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+  const user = useSelector((item:any) => item.user)
   return (
     <div
       className={cn(
@@ -26,7 +28,7 @@ export const HoverEffect = ({
         className
       )}
     >
-      {items.map((item, idx) => (
+      {items?.map((item, idx) => (
         <Link
           to={`/joblisting/${item.id}`}
           key={item?.link}
@@ -34,6 +36,7 @@ export const HoverEffect = ({
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
+
           <AnimatePresence >
             {hoveredIndex === idx && (
               <motion.span
@@ -53,8 +56,9 @@ export const HoverEffect = ({
           </AnimatePresence>
           <Card>
             <CardTitle>{item.title}</CardTitle>
-            <CardDescription>Skills requried: {item.skills.join()}</CardDescription>
-            <CardDescription>Base Salary: {item.salary}</CardDescription>
+            {user.isRec?<CardTitle>{item.gmail}</CardTitle>:null}
+            <CardDescription>{user.isRec?"Skills":"requried Skills"}: {item.skills.join()}</CardDescription>
+            {item.salary?<CardDescription>Base Salary: {item.salary}</CardDescription>:null}
           </Card>
         </Link>
       ))}

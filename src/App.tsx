@@ -9,6 +9,7 @@ import Joblisting from "./pages/user/Joblisting"
 import { Form } from "./pages/user/Form"
 import { Toaster } from "@/components/ui/toaster"
 import { ToastProvider } from "@radix-ui/react-toast"
+import JoblistingRec from "./pages/Recs/Joblisting"
 const App = () => {
   return (
     <ToastProvider>
@@ -23,7 +24,7 @@ const App = () => {
           <Route path="/joblisting/:list" element={<Form/>}></Route>
         </Route>
         <Route path="" element={<PrivateRouterRec/>}>
-          <Route path="/Recdashboard" element={<h1>Rec Dashboard</h1>}></Route>
+          <Route path="/Recdashboard" element={<JoblistingRec/>}></Route>
           <Route path='/jobpost' element={<JobForm/>} />
         </Route>
       </Routes>
