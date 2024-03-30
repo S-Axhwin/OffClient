@@ -7,9 +7,11 @@ import { JobForm } from "./pages/Recs/Jobhosting"
 import PrivateRouterRec from "./PrivateRouteRec"
 import Joblisting from "./pages/user/Joblisting"
 import { Form } from "./pages/user/Form"
+import { Toaster } from "@/components/ui/toaster"
+import { ToastProvider } from "@radix-ui/react-toast"
 const App = () => {
   return (
-    <>
+    <ToastProvider>
       <Navbar/>
       <div className="">
       <Routes>
@@ -26,7 +28,8 @@ const App = () => {
         </Route>
       </Routes>
       </div>
-    </>
+      <Toaster/>
+    </ToastProvider>
   )
 }
 
