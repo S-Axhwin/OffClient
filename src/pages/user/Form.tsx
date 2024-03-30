@@ -21,7 +21,7 @@ export function Form() {
   const { toast } = useToast();
   const handleSubmit =  () => {
     console.log("ind handleSubmit");
-    axios.post("http://localhost:5001/user/bookapp", {gmail, id:params.list, skills, experience})
+    axios.post("https://offserver-production.up.railway.app/user/bookapp", {gmail, id:params.list, skills, experience})
     .then(() => {
       console.log("insider then");
       Navigate("/joblisting");

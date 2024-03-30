@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function JoblistingRec() {
   const [list, setlist] = useState<any>([]);
   useEffect(() => {
-    axios.get("http://localhost:5001/rec/getall").then((res:any) => {
+    axios.get("https://offserver-production.up.railway.app/rec/getall").then((res:any) => {
       console.log(res.data);
       setlist(res.data.data);
     })

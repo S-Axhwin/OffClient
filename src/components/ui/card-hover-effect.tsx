@@ -30,7 +30,7 @@ export const HoverEffect = ({
     >
       {items?.map((item, idx) => (
         <Link
-          to={`/joblisting/${item.id}`}
+          to={user.isRec?"":(`/joblisting/${item.id}`)}
           key={item?.link}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
@@ -55,7 +55,7 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <CardTitle>{item.title}</CardTitle>
+            <CardTitle>{user.isRec?"Name: "+item.gmail.substring(0, item.gmail.lastIndexOf("@")):item.title}</CardTitle>
             {user.isRec?<CardTitle>{item.gmail}</CardTitle>:null}
             <CardDescription>{user.isRec?"Skills":"requried Skills"}: {item.skills.join()}</CardDescription>
             {item.salary?<CardDescription>Base Salary: {item.salary}</CardDescription>:null}
