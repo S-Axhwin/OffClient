@@ -16,6 +16,7 @@ export function Form() {
   const [curSkill, setcurSkill] = useState<any>("");
   const [skills, setskills] = useState<any>([]);
   const handleSubmit = async (e: any) => {
+    experience
     e?.preventDefault();
     setloadin(true);
     axios.post("http://offserver-production.up.railway.app:5001/user/bookapp", {gmail, id:params.list})
