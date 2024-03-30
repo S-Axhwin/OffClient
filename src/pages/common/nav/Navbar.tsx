@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import LogUser from "./LogUser"
-import NotLog from "./NotLog"
+import { Navigate } from "react-router-dom"
+import { NotLog } from "./NotLog"
 
 const Navbar = () => {
   const user = useSelector((item:any) => item.user)

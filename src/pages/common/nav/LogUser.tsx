@@ -1,7 +1,6 @@
-"use client"
-
 import * as React from "react"
-
+import { Link } from "react-router-dom"
+import { HoverCards } from '../../Home/Name'
 import { cn } from "@/lib/utils"
 
 import {
@@ -13,11 +12,18 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
+import { useDispatch } from "react-redux"
+import { logoutState } from "@/redux/Slice/userSlice"
 
 
 export default function LogUser({user}:any) {
   console.log(user);
-  
+  const dispatch = useDispatch();
+
+  const Logout = () => {
+    dispatch(logoutState())
+  }
+
   return (
     <NavigationMenu className="w-screen flex justify-between p-4">
       <NavigationMenuList>
@@ -27,29 +33,27 @@ export default function LogUser({user}:any) {
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+                    to={"/"}
                   >
-                    
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      OffIcium
+                    <div className="mt-2 text-lg font-medium">
+                      <HoverCards/>
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                    It takes just one job to develop a successful relationship that can propel your career forward.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem title="Introduction">
+                This is the site that helps you to find the career.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem title="Contributers">
+                Google,Microsoft and many more companies are ready to hire you.
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem title="SupportCare">
+                We have 24/7 Support Service.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -60,37 +64,44 @@ export default function LogUser({user}:any) {
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
+              <NavigationMenuLink asChild>
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+                    to="/profile"
                   >
-                    
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      {user.username}
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
-                    </p>
-                  </a>
+                    <img src='https://a.storyblok.com/f/191576/1200x800/faa88c639f/round_profil_picture_before_.webp' className="rounded-full w-32 lg:w-48" alt=''/>
+                    <div className="mb-2 mt-4 text-lg font-medium m-auto">
+                    </div>     
+                  </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem className="h-100 hover:bg-transparent" title="Details">
+                  <Link to={"/profile"}>
+                  <div className="">
+                    <div className="flex justify-spacebetween">
+                    Name: {user.username}
+                    </div>
+                    <div className="">
+                    Age: {'18'}
+                    </div>
+                    <div>
+                    gmail: {user.gmail}
+                    </div>
+                    <div>
+                    Skills: {'Full-Stack'}
+                    </div>
+                    <div>
+                    Experience: {'2 years'}
+                    </div>
+                  </div>
+                  </Link>
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         
       </NavigationMenuList>
-      <Button variant="outline" className="hover:dardbg-red-900">Logout</Button>
+      <Button variant="outline" onClick={() => Logout()} className="hover:bg-red-900">Logout</Button>
     </NavigationMenu>
     
   )
@@ -112,7 +123,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <p className=" text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </a>

@@ -4,6 +4,7 @@ import { Scroll } from '@/pages/Home/Scroll'
 import { GlobeDemo } from "./Globe";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { SignIn } from "./SignIn";
 
 export default function Home() {
   return (
@@ -23,7 +24,9 @@ export default function Home() {
         <div className="md:text-4xl mt-5">
           <div>Find Your Career</div>
           <Link to={"/login"}>
-          <Button variant={"outline"} className="bg-transparent active:gb-transparent">Sign In</Button>
+          <div className="md:text-xl">
+          <SignIn/>
+          </div>
           </Link>
         </div>
       </motion.h1>
