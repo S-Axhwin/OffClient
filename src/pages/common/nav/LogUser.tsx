@@ -14,7 +14,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { useDispatch } from "react-redux"
 import { logoutState } from "@/redux/Slice/userSlice"
-import { ModeToggle } from "@/components/mode-toggle"
 
 
 export default function LogUser({user}:any) {
