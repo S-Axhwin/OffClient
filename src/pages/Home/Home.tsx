@@ -5,6 +5,7 @@ import { GlobeDemo } from "./Globe";
 import { Link } from "react-router-dom";
 import { SignIn } from "./SignIn";
 import { ScrollReveal } from "./ScrollReveal";
+import { Experts } from "./Experts";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       </motion.h1>
     </LampContainer>
     <ScrollReveal/>
+    <Experts/>
     <GlobeDemo/>
     <Scroll/>
     </div>

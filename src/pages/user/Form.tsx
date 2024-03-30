@@ -7,24 +7,29 @@ import { Button } from "@/components/ui/button";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 export function Form() {
+  const Navigate = useNavigate();
   const {gmail} =  useSelector((item:any) => item.user)
   const params:any = useParams();
   const [loading, setloadin] = useState<boolean>(false)
   const [experience, setexperience] = useState<any>();
   const [curSkill, setcurSkill] = useState<any>("");
   const [skills, setskills] = useState<any>([]);
+  const [error, seterror] = useState<boolean>();
   const handleSubmit = async (e: any) => {
     experience
     e?.preventDefault();
     setloadin(true);
+    console.log('here');
+    window.alert("vakam bro")
     axios.post("http://offserver-production.up.railway.app:5001/user/bookapp", {gmail, id:params.list})
-
+    .then(() => Navigate("/dashboard"))
+    .catch(() => seterror(true))
   };
   return (
     <div className="grid place-items-center h-screen">
-    <div className=" max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className={` max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black ${error?"bg-red-400":null}`}>
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Job Title: {params.list}
       </h2>
