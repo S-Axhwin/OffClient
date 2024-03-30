@@ -2,7 +2,6 @@ import * as React from "react"
 import { Link } from "react-router-dom"
 import { HoverCards } from '../../Home/Name'
 import { Button } from "@/components/ui/button"
-import { ModeToggle } from "@/components/mode-toggle"
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
@@ -17,7 +16,7 @@ import {
 
 export function NotLog() {
   return (
-    <NavigationMenu className="flex justify-between w-screen px-6 py-2">
+    <NavigationMenu className="flex justify-between px-6 py-2 overflow-x-hidden">
       <NavigationMenuList>
       <NavigationMenuItem>
           <NavigationMenuTrigger>Get Started</NavigationMenuTrigger>
@@ -51,12 +50,9 @@ export function NotLog() {
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
-      <div className="flex gap-3">
-        <Link to={"/login"}>
+      <Link to={"/login"}>
         <Button variant="outline" className="hover:bg-green-900">Sign In</Button>
-        </Link>
-      <ModeToggle/>
-      </div>
+      </Link>
     </NavigationMenu>
   )
 }
