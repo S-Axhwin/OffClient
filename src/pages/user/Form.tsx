@@ -24,7 +24,7 @@ export function Form() {
     axios.post("https://offserver-production.up.railway.app:5001/user/bookapp", {gmail, id:params.list})
     .then(() => {console.log("insider then")
     ;Navigate("/dashboard")})
-    .catch(() => console.log("error accored"))
+    .catch(() => {console.log("error accored"); seterror(true)})
   };
   return (
     <div className="grid place-items-center h-screen">
