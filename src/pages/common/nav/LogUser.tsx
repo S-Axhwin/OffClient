@@ -46,7 +46,7 @@ export default function LogUser({user}:any) {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <Link to={user.isRec?"/form":"/joblisting" }>
+              <Link to={user.isRec?"/jobpost":"/joblisting" }>
               <ListItem title="Job Listing">
                 This is the site that helps you to find the career.
               </ListItem>

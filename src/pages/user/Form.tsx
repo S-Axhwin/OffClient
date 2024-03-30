@@ -17,15 +17,14 @@ export function Form() {
   const [curSkill, setcurSkill] = useState<any>("");
   const [skills, setskills] = useState<any>([]);
   const [error, seterror] = useState<boolean>();
+  experience
   const handleSubmit = async (e: any) => {
-    experience
     e?.preventDefault();
     setloadin(true);
-    console.log('here');
-    window.alert("vakam bro")
-    axios.post("http://offserver-production.up.railway.app:5001/user/bookapp", {gmail, id:params.list})
-    .then(() => Navigate("/dashboard"))
-    .catch(() => seterror(true))
+    axios.post("https://offserver-production.up.railway.app:5001/user/bookapp", {gmail, id:params.list})
+    .then(() => {console.log("insider then")
+    ;Navigate("/dashboard")})
+    .catch(() => console.log("error accored"))
   };
   return (
     <div className="grid place-items-center h-screen">
@@ -37,7 +36,7 @@ export function Form() {
         Add your Application for the job.
       </p>
 
-      <form className="my-8" >
+      <div className="my-8" >
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="lastname">Experience</Label>
@@ -47,7 +46,7 @@ export function Form() {
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Skills</Label>
           <div className="">
-            <div className="bg-gray-900 flex overflow-x-clip  rounded-xl bg-black">
+            <div className="bg-gray-900 flex overflow-x-clip  rounded-xl bg-black px-3 py-4 my-2">
               {skills.map((item:any) => {
                 return <Span skill={item}></Span>
               })}
@@ -71,7 +70,7 @@ export function Form() {
         </button>
 
         
-      </form>
+      </div>
     </div>
     </div>
   );

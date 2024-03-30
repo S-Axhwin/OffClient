@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Span } from "./Span";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export function JobForm() {
   const [loading, setloadin] = useState<boolean>(false)
   const [title, settitle] = useState<any>();
@@ -12,11 +13,13 @@ export function JobForm() {
   const [curSkill, setcurSkill] = useState<any>("");
   const [salary, setsalary] = useState<any>("");
   const [skills, setskills] = useState<any>([]);
+  const Navigate = useNavigate()
   const handleSubmit = async (e: any) => {
     e?.preventDefault();
+
     console.log(title, experience);
     setloadin(true)
-    axios.post("https://offserver-production.up.railway.app/rec/newPost", {title, experience, skills, salary}).then(res => {console.log(res); setloadin(false)}
+    axios.post("https://offserver-production.up.railway.app/rec/newPost", {title, experience, skills, salary}).then(res => {console.log(res); setloadin(false); Navigate("/Recdashboard")}
     )
   };
   return (

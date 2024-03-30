@@ -22,7 +22,7 @@ const App = () => {
         </Route>
         <Route path="" element={<PrivateRouterRec/>}>
           <Route path="/Recdashboard" element={<h1>Rec Dashboard</h1>}></Route>
-          <Route path='/form' element={<JobForm/>} />
+          <Route path='/jobpost' element={<JobForm/>} />
         </Route>
       </Routes>
       </div>
