@@ -47,9 +47,9 @@ const people = [
 
 export function Experts() {
   return (
-    <div className="grid place-items-center text-xl">
+    <div className="grid place-items-center text-xl mt-20">
         Top Placed:
-    <div className="flex flex-row items-center justify-center mb-10 w-full mt-5">
+    <div className="flex flex-row items-center justify-center mb-20 w-full mt-5">
       <AnimatedTooltip items={people} />
     </div>
     </div>

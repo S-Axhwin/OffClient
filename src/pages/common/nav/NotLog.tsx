@@ -17,7 +17,7 @@ import {
 
 export function NotLog() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="flex justify-between w-screen px-6 py-2">
       <NavigationMenuList>
       <NavigationMenuItem>
           <NavigationMenuTrigger>Get Started</NavigationMenuTrigger>
@@ -51,8 +51,9 @@ export function NotLog() {
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
-      
+      <Link to={"/login"}>
       <Button variant="outline" className="hover:bg-green-900">Sign In</Button>
+      </Link>
     </NavigationMenu>
   )
 }
