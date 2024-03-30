@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { useDispatch } from "react-redux"
 import { logoutState } from "@/redux/Slice/userSlice"
+import { ModeToggle } from "@/components/mode-toggle"
 
 
 export default function LogUser({user}:any) {
@@ -103,7 +104,9 @@ export default function LogUser({user}:any) {
         </NavigationMenuItem>
         
       </NavigationMenuList>
-      <Button variant="outline" onClick={() => Logout()} className="hover:bg-red-900">Logout</Button>
+      <div className="flex gap-3">
+        <Button variant="outline" onClick={() => Logout()} className="hover:bg-red-900">Logout</Button>
+      </div>
     </NavigationMenu>
     
   )

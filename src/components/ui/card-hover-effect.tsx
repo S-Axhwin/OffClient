@@ -58,7 +58,7 @@ export const HoverEffect = ({
             <CardTitle>{user.isRec?"Name: "+item.gmail.substring(0, item.gmail.lastIndexOf("@")):item.title}</CardTitle>
             {user.isRec?<CardTitle>{item.gmail}</CardTitle>:null}
             <CardDescription>{user.isRec?"Skills":"requried Skills"}: {item.skills.join()}</CardDescription>
-            {item.salary?<CardDescription>Base Salary: {item.salary}</CardDescription>:null}
+            {item.salary?<CardDescription>Base Salary: ${item.salary}</CardDescription>:null}
           </Card>
         </Link>
       ))}

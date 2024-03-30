@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "react-router-dom"
 import { HoverCards } from '../../Home/Name'
 import { Button } from "@/components/ui/button"
-
+import { ModeToggle } from "@/components/mode-toggle"
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
@@ -51,9 +51,12 @@ export function NotLog() {
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
-      <Link to={"/login"}>
-      <Button variant="outline" className="hover:bg-green-900">Sign In</Button>
-      </Link>
+      <div className="flex gap-3">
+        <Link to={"/login"}>
+        <Button variant="outline" className="hover:bg-green-900">Sign In</Button>
+        </Link>
+      <ModeToggle/>
+      </div>
     </NavigationMenu>
   )
 }
