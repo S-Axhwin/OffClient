@@ -24,7 +24,7 @@ export function RegForm() {
   const [isRec, setIsRec] = useState(false);
   const handleForm = async () => {
   if(password && gmail){
-    const res = await dispatch(fetchUser({gmail, password, isRec, reg:true, phone:number}) as any)
+    await dispatch(fetchUser({gmail, password, isRec, reg:true, phone:number}) as any)
     Navigate("/login")
 }
   }
