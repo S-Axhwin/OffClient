@@ -16,7 +16,6 @@ export function JobForm() {
   const Navigate = useNavigate()
   const handleSubmit = async (e: any) => {
     e?.preventDefault();
-
     console.log(title, experience);
     setloadin(true)
     axios.post("https://offserver-production.up.railway.app/rec/newPost", {title, experience, skills, salary}).then(res => {console.log(res); setloadin(false); Navigate("/Recdashboard")}
@@ -50,14 +49,14 @@ export function JobForm() {
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Skills</Label>
           <div className="">
-            <div className="bg-gray-900 flex overflow-x-clip  rounded-xl bg-black">
+            <div className="flex overflow-x-clip  rounded-xl bg-black">
               {skills.map((item:any) => {
                 return <Span skill={item}></Span>
               })}
             </div>
             <Input placeholder="enter skill here" onChange={(e) => setcurSkill(e.target.value)} value={curSkill}/>
             <Button
-            onClick={() => {curSkill && setskills([...skills, curSkill]); setcurSkill("")}}>
+            onClick={() => {curSkill?setskills([...skills, curSkill]):null; setcurSkill("")}}>
               Add Skill
             </Button>
           </div>

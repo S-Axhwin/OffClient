@@ -9,7 +9,7 @@ import { Experts } from "./Experts";
 
 export default function Home() {
   return (
-    <div>
+    <div className="no-scrollbar">
     <LampContainer>
       <motion.h1
         initial={{ opacity: 0.5, y: 100 }}

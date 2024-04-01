@@ -15,30 +15,24 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 
-export function Login() {
+export function RegForm() {
   const Navigate = useNavigate()
   const dispatch = useDispatch();
   const [gmail, setgmail] = useState<String>("");
   const [password, setpassword] = useState<String>("");
+  const [number, setnumber] = useState<String>("");
   const [isRec, setIsRec] = useState(false);
-  const handleForm = () => {
-    if(password && gmail){
-      dispatch(fetchUser({gmail, password, isRec}) as any)
-      .then(() => {
-        if(isRec){
-          Navigate("/RecDashboard")
-        }else {
-          Navigate("/joblisting")
-        }
-      })
-    }
-    
+  const handleForm = async () => {
+  if(password && gmail){
+    const res = await dispatch(fetchUser({gmail, password, isRec, reg:true, phone:number}) as any)
+    Navigate("/login")
+}
   }
   return (
     <div className="h-screen w-screen grid place-items-center">
     <Card className="w-[350px] transition-all duration-400 hover:drop-shadow-[0_35px_35px_#646464] hover:scale-110">
       <CardHeader>
-        <CardTitle>LOGIN</CardTitle>
+        <CardTitle>REGISTER</CardTitle>
         <CardDescription>FIND 100+ JOBS IN ONE PLACE</CardDescription>
       </CardHeader>
       <CardContent>
@@ -63,7 +57,16 @@ export function Login() {
                 value={password.toString()}
                 />
             </div>
-           
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="framework">Phone Number</Label>
+              <Input
+                id="num"
+                placeholder=""
+                type="number"
+                onChange={(e) => setnumber(e.target.value)}
+                value={number.toString()}
+                />
+            </div>
           </div>
         </form>
       </CardContent>

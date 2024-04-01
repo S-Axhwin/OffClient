@@ -3,9 +3,10 @@ import axios from "axios";
 
 export const fetchUser = createAsyncThunk("fetchUserToken", async(payload:any) => {
     console.log(payload);
-    const data:any = axios.post(`https://offserver-production.up.railway.app/${payload.isRec?"rec":"user"}/login`, {gmail:payload.gmail, password: payload.password})
+    console.log("end url: ", `${payload.isRec?"rec":"user"}/${payload.reg?"reg":"login"}`);
+    const data:any = axios.post(`https://offserver-production.up.railway.app/${payload.isRec?"rec":"user"}/${payload.reg?"reg":"login"}`, {gmail:payload.gmail, password: payload.password, phone: payload.phone})
     .then((res:any) => {
-        console.log(res);
+        console.log(res, "from fetch user");
         localStorage.setItem("token", res.data.token)
         console.log(res);
         return (res.data)

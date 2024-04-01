@@ -16,12 +16,12 @@ import {
 
 export function NotLog() {
   return (
-    <NavigationMenu className="flex justify-between px-6 py-2 overflow-x-hidden">
+    <NavigationMenu className="flex justify-between">
       <NavigationMenuList>
       <NavigationMenuItem>
           <NavigationMenuTrigger>Get Started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid gap-3  md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <Link

@@ -10,14 +10,17 @@ import { Form } from "./pages/user/Form"
 import { Toaster } from "@/components/ui/toaster"
 import { ToastProvider } from "@radix-ui/react-toast"
 import JoblistingRec from "./pages/Recs/Joblisting"
+import { RegForm } from "./pages/user/RegForm";
+
 const App = () => {
   return (
     <ToastProvider>
       <Navbar/>
-      <div className="">
+      <div className="no-scrollbar">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/reg" element={<RegForm/>}/>
         <Route path="" element={<PrivateRouter/>}>
           <Route path="/dashboard" element={<h1>Dashboard</h1>}></Route>
           <Route path="/joblisting" element={<Joblisting/>}></Route>
