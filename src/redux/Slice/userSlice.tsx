@@ -27,6 +27,17 @@ const inti = {
 const slice:any = {
     name: 'user',
     initialState: inti,
+    reducers: {
+        logout: (state:any) => {
+            state.gmail = '';
+            state.username = '';
+            state.isloading = true
+            state.isloggedIn = false
+            state.error = ''
+            state.token = ''
+            state.isRec = false
+        }
+    },
     extraReducers: (builder:any) => {
         builder.addCase(fetchUser.fulfilled, (state:any, action:any) => {
             console.log(action.payload);
@@ -51,7 +62,7 @@ const slice:any = {
 
 
 const useSlice:any = createSlice(slice) 
-export const { logoutState } = useSlice.actions
+export const { logout } = useSlice.actions
 export default useSlice.reducer
 
 /* 

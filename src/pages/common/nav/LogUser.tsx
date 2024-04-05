@@ -13,15 +13,16 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
 import { useDispatch } from "react-redux"
-import { logoutState } from "@/redux/Slice/userSlice"
-
+import { logout } from "@/redux/Slice/userSlice"
+import { MessageBox } from "./MessageBox"
 
 export default function LogUser({user}:any) {
   console.log(user);
   const dispatch = useDispatch();
 
   const Logout = () => {
-    dispatch(logoutState())
+    const conf = confirm("Do you want to logout");
+    conf?dispatch(logout()):null
   }
 
   return (
@@ -104,7 +105,7 @@ export default function LogUser({user}:any) {
         
       </NavigationMenuList>
       <div className="flex gap-3">
-        <Button variant="outline" onClick={() => Logout()} className="hover:bg-red-900">Logout</Button>
+        <MessageBox/>
       </div>
     </NavigationMenu>
     
