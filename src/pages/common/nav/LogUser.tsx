@@ -11,19 +11,11 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { Button } from "@/components/ui/button"
-import { useDispatch } from "react-redux"
-import { logout } from "@/redux/Slice/userSlice"
+
 import { MessageBox } from "./MessageBox"
 
 export default function LogUser({user}:any) {
   console.log(user);
-  const dispatch = useDispatch();
-
-  const Logout = () => {
-    const conf = confirm("Do you want to logout");
-    conf?dispatch(logout()):null
-  }
 
   return (
     <NavigationMenu  className="w-screen flex justify-between p-4 z-50">
