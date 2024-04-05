@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { toast } from "@/components/ui/use-toast"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 
@@ -25,11 +26,12 @@ export function Login() {
     if(password && gmail){
       dispatch(fetchUser({gmail, password, isRec}) as any)
       .then(() => {
-        if(isRec){
-          Navigate("/RecDashboard")
-        }else {
-          Navigate("/joblisting")
-        }
+        toast({
+          title: "logged In",
+          description: isRec?"as rec": "as job seeker"
+        })
+        //toast({title: "logged In"})
+        isRec?Navigate("/RecDashboard"):Navigate("/joblisting")
       })
     }
     

@@ -16,7 +16,7 @@ const App = () => {
   return (
     <ToastProvider>
       <Navbar/>
-      <div className="no-scrollbar">
+      <div className="no-scrollbar h-screen">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>

@@ -27,24 +27,15 @@ const inti = {
 const slice:any = {
     name: 'user',
     initialState: inti,
-    reducers: {
-        logoutState(state:any) {
-            state.gmail = ''
-            state.username = ''
-            state.isloggedIn = false;
-            state.token = ''
-        }   
-    },
     extraReducers: (builder:any) => {
-        builder.addCase(fetchUser.fulfilled, (state:any, payload:any) => {
-            const curpayload = payload.payload
-            console.log(curpayload);
-            state.gmail = curpayload.gmail;
+        builder.addCase(fetchUser.fulfilled, (state:any, action:any) => {
+            console.log(action.payload);
+            state.username = action.payload.gmail.substring(0, action.payload.gmail.lastIndexOf("@"));
+            state.gmail = action.payload.gmail;
             state.isloggedIn = true;
-            state.username = curpayload.gmail.substring(0, curpayload.gmail.lastIndexOf("@"));
-            state.token = curpayload.token
+            state.token = action.payload.token;
             state.isloading = false;
-            state.isRec = payload.payload.isRec || false
+            state.isRec = action.payload.isRec || false;
         });
 
         builder.addCase(fetchUser.pending, (state:any) => {
@@ -62,3 +53,15 @@ const slice:any = {
 const useSlice:any = createSlice(slice) 
 export const { logoutState } = useSlice.actions
 export default useSlice.reducer
+
+/* 
+const curpayload = payload.payload
+            console.log(curpayload);
+            state.gmail = curpayload.gmail;
+            state.isloggedIn = true;
+            state.username = curpayload.gmail.substring(0, curpayload.gmail.lastIndexOf("@"));
+            state.token = curpayload.token
+            state.isloading = false;
+            state.isRec = payload.payload.isRec || false
+*/
+
