@@ -38,7 +38,7 @@ export function Login() {
   }
   return (
     <div className="h-screen w-screen grid place-items-center">
-    <Card className="w-[350px] transition-all duration-400 hover:drop-shadow-[0_35px_35px_#646464] hover:scale-110">
+    <Card className="w-[350px] transition-all duration-400">
       <CardHeader>
         <CardTitle>LOGIN</CardTitle>
         <CardDescription>FIND 100+ JOBS IN ONE PLACE</CardDescription>
