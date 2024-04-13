@@ -6,7 +6,9 @@ import { Span } from "./Span";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 export function JobForm() {
+  const user = useSelector((item:any) => item.user);
   const [loading, setloadin] = useState<boolean>(false)
   const [title, settitle] = useState<any>();
   const [experience, setexperience] = useState<any>();
@@ -17,8 +19,9 @@ export function JobForm() {
   const handleSubmit = async (e: any) => {
     e?.preventDefault();
     console.log(title, experience);
-    setloadin(true)
-    axios.post("https://offserver-production.up.railway.app/rec/newPost", {title, experience, skills, salary}).then(res => {console.log(res); setloadin(false); Navigate("/Recdashboard")}
+    setloadin(true);
+    console.log(user);
+    axios.post("https://offserver-production.up.railway.app/rec/newPost", {title, experience, skills, salary, recGmail: user.gmail}).then(res => {console.log(res); setloadin(false); Navigate("/Recdashboard")}
     )
   };
   return (
@@ -56,7 +59,7 @@ export function JobForm() {
             </div>
             <Input placeholder="enter skill here" onChange={(e) => setcurSkill(e.target.value)} value={curSkill}/>
             <Button
-            onClick={() => {curSkill?setskills([...skills, curSkill]):null; setcurSkill("")}}>
+            onClick={() => {curSkill && setskills([...skills, curSkill]); setcurSkill("")}}>
               Add Skill
             </Button>
           </div>

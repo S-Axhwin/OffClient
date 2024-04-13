@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Label } from "@/components/ui/labels";
 import { Input } from "@/components/ui/inputs";
 import { cn } from "@/lib/utils";
@@ -19,9 +19,19 @@ export function Form() {
   const [error, seterror] = useState<boolean>();
   experience
   const { toast } = useToast();
+  const [recGmail, setRecGmail ] = useState<string>("")
+  useEffect(() => {
+    //
+    console.log(params);
+    axios.post("https://offserver-production.up.railway.app/rec/getbyid", {id:params.list})
+    .then((res:any) => {
+      console.log(res)
+      setRecGmail(res.recGmail)
+    })
+  }, [])
   const handleSubmit =  () => {
     console.log("ind handleSubmit");
-    axios.post("https://offserver-production.up.railway.app/user/bookapp", {gmail, id:params.list, skills, experience})
+    axios.post("https://offserver-production.up.railway.app/user/bookapp", {gmail,id:Date.now(), recGmail ,skills, experience})
     .then(() => {
       console.log("insider then");
       Navigate("/joblisting");

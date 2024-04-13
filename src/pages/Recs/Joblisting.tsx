@@ -1,11 +1,13 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function JoblistingRec() {
+  const user = useSelector((item:any) => item.user );
   const [list, setlist] = useState<any>([]);
   useEffect(() => {
-    axios.get("https://offserver-production.up.railway.app/rec/getall").then((res:any) => {
+    axios.post("https://offserver-production.up.railway.app/rec/job", {recGmail: user.gmail}).then((res:any) => {
       console.log(res.data);
       setlist(res.data.data);
     })

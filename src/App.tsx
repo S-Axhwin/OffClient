@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/joblisting/:list" element={<Form/>}></Route>
         </Route>
         <Route path="" element={<PrivateRouterRec/>}>
-          <Route path="/Recdashboard" element={<JoblistingRec/>}></Route>
+          <Route path="/Recdashboard" element={<JoblistingRec/>} />
           <Route path='/jobpost' element={<JobForm/>} />
         </Route>
       </Routes>
